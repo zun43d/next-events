@@ -14,8 +14,11 @@ export default function FilteredEvents(props) {
 
 	const filterData = router.query.slug;
 
+	const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 	const { data, error } = useSWR(
-		'https://next-events-2a211-default-rtdb.firebaseio.com/events.json'
+		'https://next-events-2a211-default-rtdb.firebaseio.com/events.json',
+		fetcher
 	);
 
 	useEffect(() => {
