@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { getEventById, getAllEvents } from '../../helpers/api-util';
 import EventSummery from '../../components/event-detail/event-summary';
 import EventLogistics from '../../components/event-detail/event-logistics';
@@ -17,6 +19,10 @@ export default function SelectedEvent(props) {
 
 	return (
 		<>
+			<Head>
+				<title>{event.title}</title>
+				<meta name="description" content={event.description} />
+			</Head>
 			<EventSummery title={event.title} />
 			<EventLogistics
 				date={event.date}
