@@ -5,6 +5,7 @@ import EventSummery from '../../components/event-detail/event-summary';
 import EventLogistics from '../../components/event-detail/event-logistics';
 import EventContent from '../../components/event-detail/event-content';
 import ErrorAlert from '../../components/ui/error-alert';
+import Comments from '../../components/input/comments';
 
 export default function SelectedEvent(props) {
 	const event = props.selectedEvent;
@@ -33,6 +34,7 @@ export default function SelectedEvent(props) {
 			<EventContent>
 				<p>{event.description}</p>
 			</EventContent>
+			<Comments eventId={event.id} />
 		</>
 	);
 }
