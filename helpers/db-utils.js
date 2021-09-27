@@ -1,3 +1,5 @@
+import { MongoClient } from 'mongodb';
+
 export const connectDatabase = async () => {
 	const client = await MongoClient.connect(
 		'mongodb+srv://zun43d:A%403534psczap@nextevents.qdtax.mongodb.net/nextEventsDB?retryWrites=true&w=majority'
