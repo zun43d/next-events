@@ -1,5 +1,3 @@
-import { MongoClient } from 'mongodb';
-
 import { connectDatabase, insertDocument } from '../../helpers/db-utils';
 
 export default async function handler(req, res) {
@@ -14,17 +12,19 @@ export default async function handler(req, res) {
 		let client;
 
 		try {
-			client = connectDatabase();
+			client = await connectDatabase();
 		} catch (err) {
 			res.status(500).json({ message: 'Connecting to database failed!' });
 			return;
 		}
 
 		try {
-			insertDocument(client, 'newsletter', { email: userEmail });
+			await insertDocument(client, 'newsletter', {
+				email: userEmail,
+			});
 			client.close();
 		} catch (err) {
-			res.staus(500).json({ message: 'Failed to insert data into database!' });
+			res.status(500).json({ message: 'Failed to insert data into database!' });
 			return;
 		}
 
